@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import tokenLogo from '../token-logo.png'
 import ethLogo from '../eth-logo.png'
 
-//const BigNumber = require('bignumber.js');
-
 class BuyForm extends Component {
 
  
@@ -15,17 +13,16 @@ class BuyForm extends Component {
   }
 
   render() {
-     //const w3 = new Web3("https://rinkeby.infura.io/v3/e9de165b048446448a63b212962230d3");
+    
      const aggregatorV3InterfaceABI = [{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"description","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint80","name":"_roundId","type":"uint80"}],"name":"getRoundData","outputs":[{"internalType":"uint80","name":"roundId","type":"uint80"},{"internalType":"int256","name":"answer","type":"int256"},{"internalType":"uint256","name":"startedAt","type":"uint256"},{"internalType":"uint256","name":"updatedAt","type":"uint256"},{"internalType":"uint80","name":"answeredInRound","type":"uint80"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"latestRoundData","outputs":[{"internalType":"uint80","name":"roundId","type":"uint80"},{"internalType":"int256","name":"answer","type":"int256"},{"internalType":"uint256","name":"startedAt","type":"uint256"},{"internalType":"uint256","name":"updatedAt","type":"uint256"},{"internalType":"uint80","name":"answeredInRound","type":"uint80"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"version","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
-     const addr = "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e";
-     //const priceFeed = new w3.eth.Contract(aggregatorV3InterfaceABI, addr);
+     const addr = "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419";
      let  priceETHUSD = "";
      let priceSON;
      let rate ;
      const priceFeed = new window.web3.eth.Contract(aggregatorV3InterfaceABI, addr);
      priceFeed.methods.latestRoundData().call()
     .then((roundData) => {
-        // Do something with roundData
+        
         console.log("Latest Round Data", roundData)
         
         priceSON = 0.01 * 10**8;
