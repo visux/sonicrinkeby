@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Sonic Token</title>
+   <script src="https://cdn.jsdelivr.net/npm/web3@1.2.2/dist/web3.min.js"></script>
+    <script>
+      window.addEventListener("load", function() {
+        
+      /*  const Web3 = require("web3");
+         const ethEnabled = async () => {
+            if (window.ethereum) {
+              await window.ethereum.send('eth_requestAccounts');
+              window.web3 = new Web3(window.ethereum);
+              return true;
+            }
+            return false;
+          }*/
+
+       /* if (typeof web3 !== "undefined") {
+          window.web3 = new Web3(web3.currentProvider);
+        } else {
+          console.log("No web3? You should consider trying MetaMask!");
+          window.web3 = new Web3(
+            new Web3.providers.HttpProvider("http://localhost:3000")
+          );
+        }*/
+       // Dapp();
+      });
+
+     /* window.addEventListener('load', function () {
+          if (window.ethereum) {
+              window.web3 = new Web3(ethereum);
+              ethereum.enable()
+                  .then(() => {
+                      console.log("Ethereum enabled");
+
+                      web3.eth.getAccounts(function (err, acc) {
+                          if (err != null) {
+                              self.setStatus("There was an error fetching your accounts");
+                              return;
+                          }
+                          if (acc.length > 0) {
+                              console.log(acc);
+                          }
+                      });
+                  })
+                  .catch(() => {
+                      console.warn('User didn\'t allow access to accounts.');
+                      waitLogin();
+                  });
+          } else {
+              console.log("Non-Ethereum browser detected. You should consider installing MetaMask.");
+          }
+      });*/
+     /* if (window.ethereum) {
+        handleEthereum();
+      } else {
+        window.addEventListener('ethereum#initialized', handleEthereum, {
+          once: true,
+        });
+
+        // If the event is not dispatched by the end of the timeout,
+        // the user probably doesn't have MetaMask installed.
+        setTimeout(handleEthereum, 3000); // 3 seconds
+      }
+
+      async function handleEthereum() {
+        const { ethereum } = window;
+        if (ethereum && ethereum.isMetaMask) {
+          console.log('Ethereum successfully detected!');
+          var accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+          const oldProvider = web3.currentProvider; // keep a reference to metamask provider
+
+          myWeb3 = new Web3(oldProvider); 
+          global.web3 = myWeb3
+        } else {
+          console.log('Please install MetaMask!');
+          waitLogin();
+        }
+      }*/
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+   <style>
+       
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            user-select: none;
+        }
+
+        html {
+            font-size: 16px;
+            font-variant: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on, 'cv03' on;
+        }
+
+
+        #background-radial-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            pointer-events: none;
+            width: 200vw;
+            height: 200vh;
+            mix-blend-mode: color;
+            background: radial-gradient(50% 50% at 50% 50%, #fc077d10 0%, rgba(255, 255, 255, 0) 100%);
+            transform: translate(-50vw, -100vh);
+            z-index: -1;
+        }
+
+        html {
+            min-height: 100%;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            html {
+                background-color: #212429;
+            }
+        }
+        @media (prefers-color-scheme: light) {
+            html {
+                background-color: #F7F8FA;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+   
+     <div class="container">
+      <div class="row">
+        <div class="col-md-12 corp">
+          <h1></h1>
+
+          <p>© 2021 Sonikchain</p>
+
+       <!--   <div id="prepare">
+            <button class="btn btn-primary" id="btn-connect">
+              Connect yout wallet
+            </button>
+          </div>
+
+          <div id="connected" style="display: none">
+
+            <button class="btn btn-primary" id="btn-disconnect">
+              Disconnect your wallet
+            </button>
+
+            <hr>
+
+            <div id="network">
+              <p>
+                <strong>Connected blockchain:</strong> <span id="network-name"></span>
+              </p>
+
+              <p>
+                <strong>Selected account:</strong> <span id="selected-account"></span>
+              </p>
+
+            </div>
+
+            <hr>
+
+            <h3>All account balances</h3>
+
+            <table class="table table-listing">
+              <thead>
+                <th>Address</th>
+                <th>ETH balance</th>
+              </thead>
+
+              <tbody id="accounts">
+              </tbody>
+            </table>
+
+            <p>Please try to switch between different accounts in your wallet if your wallet supports this functonality.</p>
+          -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- We use simple <template> templating for the example -->
+   <!-- <div id="templates" style="display: none">
+      <template id="template-balance">
+        <tr>
+          <th class="address"></th>
+          <td class="balance"></td>
+        </tr>
+      </template>
+    </div>-->
+ <div id="background-radial-gradient"></div>
+  
+  
+  </body>
+</html>

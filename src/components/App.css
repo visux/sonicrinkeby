@@ -1,0 +1,76 @@
+
+html {
+background: url(./../../src/background.jpg) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./../../src/background.jpg', sizingMethod='scale');
+-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./../../src/background.jpg', sizingMethod='scale')";
+}
+body{
+    background:none;
+}
+.text-secondary {
+     color: #ffffff !important; 
+     font-size:20px;
+     border-color: #007bff;
+}
+
+.bg-dark {
+    background-color: rgb(6, 1, 27) !important;
+    color: #ffffff;
+}
+
+.btn-light {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+.hiddennow{
+    display: none;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+    color: #ffffff !important;
+    background-color: rgb(6, 1, 27);
+    border-radius: 30px 30px 30px 30px;
+    min-width: 500px;
+}
+
+.text-muted {
+    color: #ffffff !important;
+}
+
+.card{
+    border-radius: 30px !important;
+}
+
+.corp{
+    text-align: center;
+    color: #ffffff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #052a52;
+    border-color: #007bff;
+}
+
+.pl-3, .px-3 {
+    padding-left: 1rem !important;
+    background-color: #052a52;
+    padding: 10px;
+    border-radius: 20px;
+    border-color: #007bff;
+}
+
+.networkdefault{
+    color: #00ff73;
+    background-color: #052a52;
+    border-color: #007bff;
+}
