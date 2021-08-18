@@ -39,7 +39,7 @@ body{
     color: #ffffff !important;
     background-color: rgb(6, 1, 27);
     border-radius: 30px 30px 30px 30px;
-    min-width: 500px;
+    /*min-width: 500px;*/
 }
 
 .text-muted {

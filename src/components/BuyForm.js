@@ -94,8 +94,8 @@ class BuyForm extends Component {
           </div>
         </div>
         <div className="mb-5">
-          <span className="float-left text-muted">Exchange Rate</span>
-          <span className="float-right text-muted">1 ETH = {rate} SON</span>
+          <span className="float-left text-muted"></span>
+          <span className="float-right text-muted"></span>
         </div>
         <button type="submit" className="btn btn-primary btn-block btn-lg">SWAP</button>
       </form>

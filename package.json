@@ -4,6 +4,7 @@
   "description": "An Instant ERC20 Cryptocurrency Exchange",
   "author": "francesco.l@sonikchain.com",
   "dependencies": {
+    "@chainlink/contracts": "^0.2.1",
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-es2015": "6.24.1",
@@ -20,7 +21,7 @@
     "react-bootstrap": "1.0.0-beta.5",
     "react-dom": "16.8.4",
     "react-scripts": "2.1.3",
-    "truffle": "5.0.5",
+    "truffle": "^5.0.5",
     "walletconnect-web3-provider-patched": "^1.0.0-beta.47",
     "web3": "^1.3.6",
     "web3modal": "^1.9.3"
