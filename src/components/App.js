@@ -99,8 +99,8 @@ class App extends Component {
     this.setState({ ethBalance })
     
     //Load Token
-    const networkId = 'rinkeby'
-    //const networkId = await web3.eth.net.getId()
+    //const networkId = 'rinkeby'
+    const networkId = await web3.eth.net.getId()
 	  //await  web3.eth.net.getId()
 	//await  web3.eth.net.getId() 5777
     //const networkId = 4
