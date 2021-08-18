@@ -7119,11 +7119,17 @@
     "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {
-    "ropsten": {
+    "rinkeby": {
       "events": {},
       "links": {},
       "address": "0x59309f75ea40c5743cecd3e846d52d8fb988168f",
       "transactionHash": "0xdbe3fd05a94449c309dfbfdfa2d968c1ef578ea82e0aca514de018a9413ad574"
+    },
+	"5777": {
+      "events": {},
+      "links": {},
+      "address": "0xc6f499688d5a65370476335092bfb748776a5CAC",
+      "transactionHash": "0xbc9407ad6a82203f1b489e57cca143cb6b286a6d87aca5b4422ced54d02a0ac8"
     }
   },
   "schemaVersion": "3.4.3",
