@@ -10,7 +10,7 @@ contract EthSwap  {
     SonicERC777 public token;
     uint rate = 200000; //1 ether = 200000 tokens
 	int public priceETHUSD;
-	uint public priceSON = 0.01 * 10**8;
+	int public priceSON; //0.01 * 10**8;
 
     
 	
@@ -36,7 +36,8 @@ contract EthSwap  {
         token = _token;
         // MAINNET
         priceFeed = AggregatorV3Interface(0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419);
-       
+        // RINKEBY
+        //priceFeed = AggregatorV3Interface(0x8A753747A1Fa494EC906cE90E9f37563A8AF630e);
         
     }
     
@@ -56,9 +57,11 @@ contract EthSwap  {
     }
     
     function buyTokens() public payable {
-       
-        priceETHUSD= getThePrice() / 10 ** 8; 
-        rate = ( uint(priceETHUSD) / priceSON ) * 10 ** 8;
+        
+        priceSON = 1000000;
+        priceETHUSD = getThePrice();
+        int valprice  =  priceETHUSD / priceSON ;
+        rate = uint(valprice) ;
         uint tokenAmount = msg.value * rate;
         require(token.balanceOf(address(this)) >= tokenAmount);
         token.transfer(msg.sender, tokenAmount);
@@ -74,8 +77,11 @@ contract EthSwap  {
     
 
     function sellTokens(uint _amount) public {
-        priceETHUSD= getThePrice() / 10 ** 8; 
-        rate = ( uint(priceETHUSD) / priceSON ) * 10 ** 8;
+       
+        priceSON = 1000000;
+        priceETHUSD = getThePrice();
+        int valprice  =  priceETHUSD / priceSON ;
+        rate = uint(valprice) ;
         uint etherAmount = _amount/rate;
         require(address(this).balance >= etherAmount);
 

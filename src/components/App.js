@@ -103,7 +103,8 @@ class App extends Component {
    // const networkId = await web3.eth.net.getId()
 	  //await  web3.eth.net.getId()
 	//await  web3.eth.net.getId() 5777
-    const networkId = 5777
+    
+	const networkId = 5777
     const tokenData = Token.networks[networkId]
 
     if(tokenData) {

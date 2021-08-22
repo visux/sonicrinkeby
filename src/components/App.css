@@ -18,7 +18,8 @@ body{
 }
 
 .bg-dark {
-    background-color: rgb(6, 1, 27) !important;
+    /*background-color: rgb(6, 1, 27) !important;*/
+    background-color: rgb(3, 28, 55) !important;
     color: #ffffff;
 }
 

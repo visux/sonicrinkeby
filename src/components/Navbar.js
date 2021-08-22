@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import Identicon from 'identicon.js'
-
+import sonikchainLogo from '../sonikchain250.png'
 class Navbar extends Component {
   
   render() {
     return (
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        
-          SONIC(K) DEX SWAP
+        <img src={sonikchainLogo} height='32' alt="" />
+   
         
         <ul className="navbar-nav px-3">
           <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">

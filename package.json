@@ -2,7 +2,7 @@
   "name": "sonicdexswap",
   "version": "1.0.0",
   "description": "An Instant ERC20 Cryptocurrency Exchange",
-  "author": "francesco.l@sonikchain.com",
+  "author": "support@sonikchain.com",
   "dependencies": {
     "@chainlink/contracts": "^0.2.1",
     "babel-polyfill": "6.26.0",

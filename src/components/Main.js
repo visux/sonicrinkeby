@@ -34,7 +34,7 @@ constructor(props) {
         
         <button
           className="btn networkdefault" >
-          <small id="networkdefault">NETWORK: ETHEREUM MAINNET</small> 
+          <small id="networkdefault">DEX SWAP NETWORK: ETHEREUM MAINNET</small> 
           </button>
 
 
