@@ -1,4 +1,4 @@
-<button
+/*<button
 className="btn btn-light"
 onClick={(event) => {
   this.setState({ currentForm: 'buy' })
@@ -14,4 +14,4 @@ onClick={(event) => {
 }}
 >
 SELL
-</button>
+</button>*/

@@ -6,8 +6,10 @@ import EthSwap from '../abis/EthSwap.json'
 import Main from './Main.js'
 import Navbar from './Navbar.js'
 import './App.css'
-
-
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import metamaskLogo from './providers/logos/metamask.png'
+import walletconnectLogo from './providers/logos/walletconnect.svg'
+import Web3Modal from "web3modal";
 class App extends Component {
   
   async componentWillMount() {
@@ -17,44 +19,55 @@ class App extends Component {
 
   async loadWeb3() {
    
-
-    /*const providerOptions = {
-      // Example with injected providers
+    const providerOptions = {
+      
       injected: {
         display: {
-          logo: "data:image/gif;base64,INSERT_BASE64_STRING",
-          name: "Injected",
-          description: "Connect with the provider in your Browser"
+          logo: metamaskLogo,
+          name: "Metamask",
+          description: "Connect to your Metamask Wallet"
         },
         package: null
       },
-      // Example with WalletConnect provider
+     
       walletconnect: {
         display: {
-          logo: "data:image/gif;base64,INSERT_BASE64_STRING",
-          name: "Mobile",
-          description: "Scan qrcode with your mobile wallet"
+          logo:  walletconnectLogo,
+          name: "WalletConnect",
+          description: "Scan with WalletConnect to connect"
         },
         package: WalletConnectProvider,
         options: {
-          infuraId: "INFURA_ID" // required
+          infuraId: "e9de165b048446448a63b212962230d3" // required
         }
       }
     };
-
+    
     const web3Modal = new Web3Modal({
       network: "mainnet", // optional
-      cacheProvider: true, // optional
-      providerOptions // required
+      cacheProvider: false, // optional
+      providerOptions, // required
+      disableInjectedProvider: false,
+      theme: {
+        background: "#031c37",
+        main: "#00ff73",
+        secondary: "#f2f2f2",
+        border: "rgba(195, 195, 195, 0.14)",
+        hover: "#760cc8"
+      }
+    
     });
 
-    const provider = await web3Modal.connect();
-
-    const web3 = new Web3(provider);
-*/
-
-
-/*    const { ethereum } = window;
+    //await window.web3.currentProvider.enable();
+    //window.web3 = new Web3(window.web3.currentProvider);
+    // await
+    const provider =  await web3Modal.connect();
+    
+    window.web3 = new Web3(provider);
+    
+   
+    
+   /* const { ethereum } = window;
     if (ethereum && ethereum.isMetaMask) {
       console.log('Ethereum successfully detected!');
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
@@ -65,16 +78,18 @@ class App extends Component {
       window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
     }*/
 
-   if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
-      await window.ethereum.enable();
+  /* if (window.ethereum) {   //BUONA
+     window.web3 = new Web3(window.ethereum);
+     await window.ethereum.enable();
     }
     else if (window.web3) {
       window.web3 = new Web3(window.web3.currentProvider);
     }
     else {
       window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
-    }
+    }*/
+
+
 
   /*  const Web3 = require("web3");
       const ethEnabled = async () => {
@@ -86,13 +101,14 @@ class App extends Component {
         return false;
       }
 */
+   
   }
   
   
   
   async loadBlockchainData() {
     const web3 = window.web3;
-    
+    //const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     const accounts = await web3.eth.getAccounts();
     this.setState({ account: accounts[0] })
     const ethBalance = await web3.eth.getBalance(accounts[0])
@@ -168,7 +184,7 @@ class App extends Component {
     if(this.state.loading) {
       content = <p id="loader" className="text-center">Loading...</p>
     } else {
-      content = <Main 
+      content =  <Main 
       ethBalance={this.state.ethBalance} 
       tokenBalance={this.state.tokenBalance}
       buyTokens={this.buyTokens}
@@ -184,7 +200,6 @@ class App extends Component {
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
                 { content }
-          
               </div>
             </main>
           </div>
