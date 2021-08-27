@@ -60,12 +60,36 @@ class App extends Component {
 
     //await window.web3.currentProvider.enable();
     //window.web3 = new Web3(window.web3.currentProvider);
-    // await
     const provider =  await web3Modal.connect();
+        
+    provider.on("accountsChanged", (accounts) => {
+      this.loadBlockchainData()
+      console.log(accounts);
+    });
     
+    provider.on("chainChanged", (chainId) => {
+      this.loadBlockchainData()
+      console.log(chainId);
+    });
+    
+    provider.on("networkChanged", (networkId) => {
+      this.loadBlockchainData()
+      console.log(networkId);
+    });
+
+    provider.on("disconnect", (code, reason) => {
+      //this.loadBlockchainData() 
+      console.log(code, reason);
+    });
+    /*provider.on("connect", (info: { chainId: number }) => {
+      console.log(info);
+    });
+    
+    provider.on("disconnect", (error: { code: number; message: string }) => {
+      console.log(error);
+    });*/
     window.web3 = new Web3(provider);
     
-   
     
    /* const { ethereum } = window;
     if (ethereum && ethereum.isMetaMask) {

@@ -12,8 +12,8 @@ body{
     background:none;
 }
 .text-secondary {
-     color: #ffffff !important; 
-     font-size:20px;
+     color: #00ff73 !important; 
+     /*font-size:20px;*/
      border-color: #007bff;
 }
 
@@ -74,4 +74,8 @@ body{
     color: #00ff73;
     background-color: #052a52;
     border-color: #007bff;
+}
+
+.btn:hover{
+    color:#007bff;
 }
