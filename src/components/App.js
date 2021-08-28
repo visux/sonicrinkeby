@@ -18,7 +18,7 @@ class App extends Component {
      await this.loadBlockchainData()
   }
 
-  async addMetamask(){
+ /* async addMetamask(){
     const tokenAddress = '0xce659de292ad4fa9aafd82b038936cebd9291e77';
     const tokenSymbol = 'SON';
     const tokenDecimals = 18;
@@ -48,7 +48,7 @@ class App extends Component {
       console.log(error);
     }
   }
-
+*/
   async loadWeb3() {
    
     const providerOptions = {
