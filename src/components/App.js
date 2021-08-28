@@ -13,12 +13,12 @@ import Web3Modal from "web3modal";
 class App extends Component {
   
   async componentWillMount() {
-     await this.metamask()
+     
      await this.loadWeb3()
      await this.loadBlockchainData()
   }
 
-  async metamask(){
+  async addMetamask(){
     const tokenAddress = '0xce659de292ad4fa9aafd82b038936cebd9291e77';
     const tokenSymbol = 'SON';
     const tokenDecimals = 18;
