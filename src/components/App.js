@@ -13,8 +13,40 @@ import Web3Modal from "web3modal";
 class App extends Component {
   
   async componentWillMount() {
+     await this.metamask()
      await this.loadWeb3()
      await this.loadBlockchainData()
+  }
+
+  async metamask(){
+    const tokenAddress = '0xce659de292ad4fa9aafd82b038936cebd9291e77';
+    const tokenSymbol = 'SON';
+    const tokenDecimals = 18;
+    const tokenImage = 'https:/swap.sonikchain.com/src/sonicimage.png';
+
+    try {
+      
+      const wasAdded = await ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: tokenAddress, 
+            symbol: tokenSymbol, 
+            decimals: tokenDecimals, 
+            image: tokenImage,
+          },
+        },
+      });
+
+      if (wasAdded) {
+        console.log('Successufull added!');
+      } else {
+        console.log('No meta image');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async loadWeb3() {
