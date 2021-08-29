@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 import Web3 from "web3";
 import Token from '../abis/Token.json'
 import EthSwap from '../abis/EthSwap.json'
@@ -10,6 +11,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import metamaskLogo from './providers/logos/metamask.png'
 import walletconnectLogo from './providers/logos/walletconnect.svg'
 import Web3Modal from "web3modal";
+
 class App extends Component {
   
   async componentWillMount() {
@@ -229,7 +231,9 @@ class App extends Component {
             </main>
           </div>
         </div>
+      
       </div>
+      
     );
   }
 }

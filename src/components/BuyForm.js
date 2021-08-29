@@ -1,40 +1,6 @@
 import React, { Component } from 'react'
 import tokenLogo from '../token-logo.png'
 import ethLogo from '../eth-logo.png'
-//import WalletConnectProvider from "@walletconnect/web3-provider";
-//import metamaskLogo from './providers/logos/metamask.png'
-//import {useEffect, useState} from "react";
-//import Link from 'next / link';
-//import wallet_model from './models/wallet_model';
-
-/*const {web3Loading, getweb3} = wallet_model ();
-const [myWeb3, setMyWeb3] = useState ();
-
-*/
-//import Web3 from "web3";
-//import Web3Modal from "web3modal";
-
-
-/*
-// Subscribe to accounts change
-provider.on("accountsChanged", (accounts) => {
-  console.log(accounts);
-});
-
-// Subscribe to chainId change
-provider.on("chainChanged", (chainId) => {
-  console.log(chainId);
-});
-
-// Subscribe to provider connection
-provider.on("connect", (info: { chainId }) => {
-  console.log(info);
-});
-
-// Subscribe to provider disconnection
-provider.on("disconnect", (error: { code: number; message: string }) => {
-  console.log(error);
-});*/
 
 
 class BuyForm extends Component {
@@ -48,9 +14,6 @@ class BuyForm extends Component {
   }
 
 
-
- 
-    
   
 
   render() {

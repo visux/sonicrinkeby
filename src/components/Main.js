@@ -16,7 +16,7 @@ constructor(props) {
     const tokenAddress = '0xce659de292ad4fa9aafd82b038936cebd9291e77';
     const tokenSymbol = 'SON';
     const tokenDecimals = 18;
-    const tokenImage = 'https://www.sonikchain.com/assets/sonictok.png';
+    const tokenImage = 'https://swap.sonikchain.com/sonictok.png';
 
     try {
       
