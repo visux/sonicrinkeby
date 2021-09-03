@@ -1,7 +1,7 @@
 {
   "name": "sonicdexswap",
   "version": "1.0.0",
-  "description": "An Instant ERC20 Cryptocurrency Exchange",
+  "description": "Sonikchain DEX Cryptocurrency Exchange",
   "author": "support@sonikchain.com",
   "dependencies": {
     "@chainlink/contracts": "^0.2.1",
@@ -28,6 +28,7 @@
     "react-dom": "^16.8.4",
     "react-native": "^0.65.1",
     "react-scripts": "2.1.3",
+    "reactjs-bottom-navigation": "^1.0.4",
     "truffle": "^5.0.5",
     "typescript": "^4.3.5",
     "walletconnect-web3-provider-patched": "^1.0.0-beta.47",
