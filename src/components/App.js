@@ -11,6 +11,7 @@ import WalletConnectProvider from "@walletconnect/web3-provider";
 import metamaskLogo from './providers/logos/metamask.png'
 import walletconnectLogo from './providers/logos/walletconnect.svg'
 import Web3Modal from "web3modal";
+import $ from "jquery";
 
 class App extends Component {
   
@@ -22,6 +23,8 @@ class App extends Component {
 
   async loadWeb3() {
    
+    
+
     const providerOptions = {
       
       injected: {
@@ -60,7 +63,7 @@ class App extends Component {
       }
     
     });
-
+    installMetamask();
     //await window.web3.currentProvider.enable();
     //window.web3 = new Web3(window.web3.currentProvider);
     const provider =  await web3Modal.connect();
@@ -128,6 +131,15 @@ class App extends Component {
         return false;
       }
 */
+      
+    function installMetamask() {
+     //if (!(window.web3 || window.ethereum)) {
+        if ($('#installMetaMask').length < 1){
+          $('.web3modal-modal-card').prepend('<div id="installMetaMask" class="cjAFRf web3modal-provider-wrapper jATXJA"><a href="https://metamask.io/" target="_blank" class="sc-hKFyIo gASkQ web3modal-provider-container"><div class="sc-bdnylx jMhaxE web3modal-provider-icon"><img src="" alt="MetaMask"></div><div class="sc-gtssRu kfKIgv sc-web3modal-provider-name mt-0">Install MetaMask</div><div class="sc-dlnjPT cZGiur web3modal-provider-description">Connect using browser wallet</div></a></div>')
+          $('.web3modal-modal-card div#installMetaMask a img').attr("src", metamaskLogo);
+        }
+      //}
+    }
    
   }
   
