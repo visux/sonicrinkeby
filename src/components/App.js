@@ -153,13 +153,30 @@ class App extends Component {
     const ethBalance = await web3.eth.getBalance(accounts[0])
     this.setState({ ethBalance })
     
+/*
+    const chainId = await ethereum.request({ method: 'eth_chainId' });
+    handleChainChanged(chainId);
+
+    ethereum.on('chainChanged', handleChainChanged);
+
+    function handleChainChanged(_chainId) {
+      // We recommend reloading the page, unless you must do otherwise
+      window.location.reload();
+    }*/
     //Load Token
     //const networkId = 'rinkeby'
    // const networkId = await web3.eth.net.getId()
 	  //await  web3.eth.net.getId()
 	//await  web3.eth.net.getId() 5777
     
-	const networkId = 5777
+	 const networkId = 5777;
+   //const networkId = window.ethereum.request({ method: 'net_version' })
+    //var networkId = await web3.eth.net.getId();
+    //if (networkId === 1)  networkId =5777;
+    
+    const chainId = await web3.eth.getChainId();
+    console.log(networkId);
+    console.log(chainId);
     const tokenData = Token.networks[networkId]
 
     if(tokenData) {
