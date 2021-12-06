@@ -1,12 +1,13 @@
 
 html {
-background: url(./../../src/background.jpg) no-repeat center center fixed;
+	background-color: #02011a;
+/*background: url(./../../src/background.jpg) no-repeat center center fixed;
 -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
 filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./../../src/background.jpg', sizingMethod='scale');
--ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./../../src/background.jpg', sizingMethod='scale')";
+-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./../../src/background.jpg', sizingMethod='scale')";*/
 }
 body{
     background:none;
@@ -18,8 +19,10 @@ body{
 }
 
 .bg-dark {
+
     /*background-color: rgb(6, 1, 27) !important;*/
-    background-color: rgb(3, 28, 55) !important;
+   /* background-color: rgb(3, 28, 55) !important;*/
+    background-color: #02011a !important;
     color: #ffffff;
 }
 
@@ -104,3 +107,58 @@ button#addmeta {
 .web3modal-modal-card div#installMetaMask a:hover{
    text-decoration: none;
 }
+
+.immaginelogo{
+    height: 60px;
+    box-shadow: #00ff73 ;
+}
+
+
+
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 800;
+  font-display: block;
+  src: url(https://fonts.gstatic.com/s/quicksand/v21/6xK-dSZaM9iE8KbpRA_LJ3z8mH9BOJvgkP8o58a-xDwxUD2GFw.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+h1.mainWordmark {
+  font-family: Quicksand, serif;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 40px;
+  font-weight: normal;
+  color: #FFFFFF;
+}
+
+h4.mainHeader {
+  font-family: Quicksand, serif;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: #FFFFFF;
+}
+
+a {
+  color: #FFFFFF;
+}
+
+  /*        
+h4.mainHeader {
+  font-family: Quicksand, serif;
+  text-align: left;
+  margin-bottom: 0;
+  font-size: 12px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  width: 260px;
+}
+*/
+
+
+
+

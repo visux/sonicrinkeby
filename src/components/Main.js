@@ -10,14 +10,17 @@ constructor(props) {
     this.state = {
         currentForm: 'buy'
     }
+   
 }
 
  addMetamask(){
-    const tokenAddress = '0xce659de292ad4fa9aafd82b038936cebd9291e77';
-    const tokenSymbol = 'SON';
+    let tokenAddress='0xce659de292ad4fa9aafd82b038936cebd9291e77';
+	const tokenSymbol = 'SON';
     const tokenDecimals = 18;
     const tokenImage = 'https://swap.sonikchain.com/sonictok.png';
-
+    if(this.props.networkID === 137) {
+	    tokenAddress = '0x7f8813a8e203ee026c9c6a1ca380e0237488ceb8';
+	}
     try {
       
       const wasAdded =   window.ethereum.request({
@@ -43,23 +46,38 @@ constructor(props) {
     }
   }
 
+  switchToMainnet(){
+  }
+
+  switchToPolygon(){
+  }
   
  
   render() {
+	  
+
     let content
     if(this.state.currentForm === 'buy') {
         content=<BuyForm
         ethBalance={this.props.ethBalance}
         tokenBalance={this.props.tokenBalance}
         buyTokens={this.props.buyTokens}
+		networkID={this.props.networkID}
+		networkString={this.props.networkString}
+	
         />
     } else {
         content=<SellForm
         ethBalance={this.props.ethBalance}
         tokenBalance={this.props.tokenBalance}
         sellTokens={this.props.sellTokens}
+		networkID={this.props.networkID}
+		networkString={this.props.networkString}
         />
     }
+	
+
+	
     return (
       <div id="content" className="mt-3">
         <div className="d-flex justify-content-between mb-3">
@@ -70,7 +88,7 @@ constructor(props) {
          
         <button
           className="btn networkdefault" >
-          <small id="networkdefault">NETWORK: ETHEREUM MAINNET</small> 
+          <small id="networkdefault">NETWORK: {this.props.networkString} MAINNET</small> 
           </button>
 
 

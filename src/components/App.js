@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-
-
+import React, { useContext, useEffect, useMemo, useState,Component } from 'react'
+import UAuth from '@uauth/js'
+import UAuthSPA  from '@uauth/js'
+import * as UAuthWeb3Modal from '@uauth/web3modal'
 import Web3 from "web3";
 import Token from '../abis/Token.json'
 import EthSwap from '../abis/EthSwap.json'
@@ -10,20 +11,43 @@ import './App.css'
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import metamaskLogo from './providers/logos/metamask.png'
 import walletconnectLogo from './providers/logos/walletconnect.svg'
-import Web3Modal from "web3modal";
+import Web3Modal, {
+  CLOSE_EVENT,
+  CONNECT_EVENT,
+  ERROR_EVENT,
+  ICoreOptions,
+} from 'web3modal'
 import $ from "jquery";
+
+
+
 
 class App extends Component {
   
+  
+
   async componentWillMount() {
-     
+ 
      await this.loadWeb3()
-     await this.loadBlockchainData()
+	   await this.loadBlockchainData()
   }
 
   async loadWeb3() {
-   
-    
+
+    const uauth = new UAuth({
+      clientID: "LVSrxQ8RYl9sKf//nXs3AiT5/jIZuF9kf4aoN0PHc1k=",
+      clientSecret: "Jnja2HUSIvnH2va87FbAvhYBvr0RSGLtqSxFPPdpVOE=",
+      redirectUri: "http://localhost:3000",
+      scope: 'openid email wallet',
+      fallbackIssuer: 'http://localhost:3000',
+    })
+
+    const onClose = () => {
+      console.log('provider.close')
+  
+      //setProvider(undefined)
+      //setAddress(undefined)
+    }
 
     const providerOptions = {
       
@@ -35,7 +59,12 @@ class App extends Component {
         },
         package: null
       },
-     
+      /*"custom-uauth": {
+        options: uauth,
+        display: UAuthWeb3Modal.display,
+        connector: UAuthWeb3Modal.connector,
+        package: UAuthSPA 
+      },*/
       walletconnect: {
         display: {
           logo:  walletconnectLogo,
@@ -48,6 +77,17 @@ class App extends Component {
         }
       }
     };
+
+    /*
+    uauth.loginCallback()
+    .then(() => {
+      console.log("OK");
+      // Redirect to success page
+    })
+    .catch(error => {
+      // Redirect to failure page
+      console.log("NO");
+    });  */
     
     const web3Modal = new Web3Modal({
       network: "mainnet", // optional
@@ -67,18 +107,46 @@ class App extends Component {
     //await window.web3.currentProvider.enable();
     //window.web3 = new Web3(window.web3.currentProvider);
     const provider =  await web3Modal.connect();
-        
+    /*console.log(web3Modal.cachedProvider);
+
+    if (web3Modal.cachedProvider === 'custom-uauth') {
+      const userok = await uauth.user();
+      console.log(userok);
+    }*/
+
+    // Subscribe to provider connection
+    /*  provider.on("connect", (info ) => {
+        console.log(info);
+      });*/
+
+      // Subscribe to provider disconnection
+      /*provider.on("disconnect", (error: { code: number; message: string }) => {
+        console.log(error);
+      });
+    
+    provider.on('connect', (accounts) => {
+      this.loadBlockchainData()
+      console.log(accounts);
+    });  */ 
+
+    //provider.on('close', onClose)
+
     provider.on("accountsChanged", (accounts) => {
       this.loadBlockchainData()
       console.log(accounts);
-    });
-    
+    });   
     provider.on("chainChanged", (chainId) => {
       this.loadBlockchainData()
       console.log(chainId);
     });
     
     provider.on("networkChanged", (networkId) => {
+	  
+	  if (networkId != 137){
+		  networkId = 5777
+	  } 
+
+    this.setState({ networkID: networkId })	
       this.loadBlockchainData()
       console.log(networkId);
     });
@@ -94,9 +162,42 @@ class App extends Component {
     provider.on("disconnect", (error: { code: number; message: string }) => {
       console.log(error);
     });*/
+
+
     window.web3 = new Web3(provider);
     
+/*
+    useEffect(() => {
+      const onErrorEvent = (error) => {
+        console.error('web3modal.ERROR_EVENT', error)
+        //setError(error)
+      }
+  
+      const onCloseEvent = () => {
+        console.log('web3modal.CLOSE_EVENT')
+      }
+  
+      const onConnectEvent = async (provider) => {
+        console.log('web3modal.CONNECT_EVENT', provider)
+      }
+  
+      console.log('Attaching event listeners to web3modal!')
+      web3Modal.on(ERROR_EVENT, onErrorEvent)
+      web3Modal.on(CLOSE_EVENT, onCloseEvent)
+      web3Modal.on(CONNECT_EVENT, onConnectEvent)
+  
+      return () => {
+        console.log('Removing event listeners to web3modal!')
+        web3Modal.off(ERROR_EVENT, onErrorEvent)
+        web3Modal.off(CLOSE_EVENT, onCloseEvent)
+        web3Modal.off(CONNECT_EVENT, onConnectEvent)
+      }
+    }, [web3Modal])
+
+*/
     
+
+	  
    /* const { ethereum } = window;
     if (ethereum && ethereum.isMetaMask) {
       console.log('Ethereum successfully detected!');
@@ -149,10 +250,21 @@ class App extends Component {
     const web3 = window.web3;
     //const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
     const accounts = await web3.eth.getAccounts();
+
     this.setState({ account: accounts[0] })
     const ethBalance = await web3.eth.getBalance(accounts[0])
     this.setState({ ethBalance })
     
+    let networkId = await web3.eth.net.getId()
+    if (networkId === 1)  networkId =5777;
+    this.setState({ networkID : networkId })
+	  networkId = this.state.networkID;
+	
+	if (networkId === 137){
+		this.setState({ networkString: 'POLYGON' })
+	}else{
+		this.setState({ networkString: 'ETHEREUM' })
+	}
 /*
     const chainId = await ethereum.request({ method: 'eth_chainId' });
     handleChainChanged(chainId);
@@ -169,9 +281,9 @@ class App extends Component {
 	  //await  web3.eth.net.getId()
 	//await  web3.eth.net.getId() 5777
     
-	 const networkId = 5777;
-   //const networkId = window.ethereum.request({ method: 'net_version' })
-    //var networkId = await web3.eth.net.getId();
+	 //const networkId = 5777;
+    //const networkId = window.ethereum.request({ method: 'net_version' })
+    //const networkId = await web3.eth.net.getId();
     //if (networkId === 1)  networkId =5777;
     
     const chainId = await web3.eth.getChainId();
@@ -209,11 +321,15 @@ class App extends Component {
     super(props)
     this.state = {
       loading: true,
+	  networkID: '0',
+	  networkString: 'ETHEREUM',
+	  logogen :{},
       account: '',
       ethBalance: '0',
       tokenBalance: '0',
       token: {},
       ethSwap: {}
+	  
     }
   }
 
@@ -233,9 +349,12 @@ class App extends Component {
     this.setState({loading: false})
   }
  
- 
+  
+
 
   render() {
+
+
     let content
     if(this.state.loading) {
       content = <p id="loader" className="text-center">Loading...</p>
@@ -245,13 +364,20 @@ class App extends Component {
       tokenBalance={this.state.tokenBalance}
       buyTokens={this.buyTokens}
       sellTokens={this.sellTokens}
+	  networkID={this.state.networkID}
+	  networkString={this.state.networkString}
      
       />
     }
     return (
       <div>
         <Navbar account={this.state.account}/>
-        <div className="container-fluid mt-5">
+          <div className="container-fluid mt-5">
+        
+          <h1 className="mainWordmark">Smart DEX Swap</h1>
+          <h4 className="mainHeader">Next generation PROTOCOL ERC777 by {' '}
+           <a href="https://www.sonikchain.com" target="_blank" rel="noopener noreferrer">Sonikchain</a></h4>
+         
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto">
@@ -268,3 +394,6 @@ class App extends Component {
 }
 
 export default App;
+
+
+

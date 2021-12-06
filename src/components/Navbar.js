@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import Identicon from 'identicon.js'
-import sonikchainLogo from '../sonikchain250.png'
+import sonikchainLogo from '../logo_white.svg'
 class Navbar extends Component {
   
   render() {
     return (
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <img src={sonikchainLogo} height='32' alt="" />
+        <img src={sonikchainLogo} alt="" class="immaginelogo" />
    
         
         <ul className="navbar-nav px-3">
