@@ -17,6 +17,7 @@ import Web3Modal, {
   ERROR_EVENT,
   ICoreOptions,
 } from 'web3modal'
+
 import $ from "jquery";
 
 
@@ -37,9 +38,9 @@ class App extends Component {
     const uauth = new UAuth({
       clientID: "LVSrxQ8RYl9sKf//nXs3AiT5/jIZuF9kf4aoN0PHc1k=",
       clientSecret: "Jnja2HUSIvnH2va87FbAvhYBvr0RSGLtqSxFPPdpVOE=",
-      redirectUri: "http://localhost:3000",
+      redirectUri: "https://swap.sonikchain.com",
       scope: 'openid email wallet',
-      fallbackIssuer: 'http://localhost:3000',
+      fallbackIssuer: 'https://swap.sonikchain.com',
     })
 
     const onClose = () => {
@@ -59,12 +60,12 @@ class App extends Component {
         },
         package: null
       },
-      /*"custom-uauth": {
+     "custom-uauth": {
         options: uauth,
         display: UAuthWeb3Modal.display,
         connector: UAuthWeb3Modal.connector,
         package: UAuthSPA 
-      },*/
+      },
       walletconnect: {
         display: {
           logo:  walletconnectLogo,
@@ -103,13 +104,19 @@ class App extends Component {
       }
     
     });
-    installMetamask();
+    //installMetamask();
     //await window.web3.currentProvider.enable();
     //window.web3 = new Web3(window.web3.currentProvider);
     const provider =  await web3Modal.connect();
-    /*console.log(web3Modal.cachedProvider);
+    //const provider =  await web3Modal.connectTo("custom-uauth");
+    //console.log(web3Modal.cachedProvider);
 
-    if (web3Modal.cachedProvider === 'custom-uauth') {
+    /*if (web3Modal.cachedProvider === 'custom-uauth') {
+      const userok = await uauth.user();
+      console.log(userok);
+      // setUser(await uauth.user())
+    }*/
+    /*if (web3Modal.cachedProvider === 'custom-uauth') {
       const userok = await uauth.user();
       console.log(userok);
     }*/
@@ -130,7 +137,10 @@ class App extends Component {
     });  */ 
 
     //provider.on('close', onClose)
-
+    /*provider.on('connect', (accounts) => {
+      this.loadBlockchainData()
+      console.log(accounts);
+    });*/
     provider.on("accountsChanged", (accounts) => {
       this.loadBlockchainData()
       console.log(accounts);
@@ -141,31 +151,25 @@ class App extends Component {
     });
     
     provider.on("networkChanged", (networkId) => {
-	  
-	  if (networkId != 137){
-		  networkId = 5777
-	  } 
-
-    this.setState({ networkID: networkId })	
+      
+      if (networkId != 137){
+        networkId = 5777
+      } 
+      this.setState({ networkID: networkId })	;
       this.loadBlockchainData()
       console.log(networkId);
     });
 
     provider.on("disconnect", (code, reason) => {
+      this.componentWillMount()
+      //this.loadBlockchainData()
       //this.loadBlockchainData() 
-      console.log(code, reason);
-    });
-    /*provider.on("connect", (info: { chainId: number }) => {
-      console.log(info);
-    });
+      //console.log(code, reason);
     
-    provider.on("disconnect", (error: { code: number; message: string }) => {
-      console.log(error);
-    });*/
-
+     
+    });
 
     window.web3 = new Web3(provider);
-    
 /*
     useEffect(() => {
       const onErrorEvent = (error) => {
@@ -192,9 +196,9 @@ class App extends Component {
         web3Modal.off(CLOSE_EVENT, onCloseEvent)
         web3Modal.off(CONNECT_EVENT, onConnectEvent)
       }
-    }, [web3Modal])
+    }, [web3Modal])*/
 
-*/
+
     
 
 	  
@@ -255,16 +259,19 @@ class App extends Component {
     const ethBalance = await web3.eth.getBalance(accounts[0])
     this.setState({ ethBalance })
     
+    
     let networkId = await web3.eth.net.getId()
     if (networkId === 1)  networkId =5777;
     this.setState({ networkID : networkId })
 	  networkId = this.state.networkID;
 	
-	if (networkId === 137){
-		this.setState({ networkString: 'POLYGON' })
-	}else{
-		this.setState({ networkString: 'ETHEREUM' })
-	}
+    if (networkId === 137){
+      this.setState({ networkString: 'POLYGON' })
+    }else{
+      this.setState({ networkString: 'ETHEREUM' })
+    }
+  
+
 /*
     const chainId = await ethereum.request({ method: 'eth_chainId' });
     handleChainChanged(chainId);
