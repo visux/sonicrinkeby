@@ -27,13 +27,11 @@ export const uauth = {
   redirectUri: 'https://swap.sonikchain.com/callback',
   fallbackIssuer: 'https://auth.unstoppabledomains.com',
   scope: 'openid wallet',
-  shouldLoginWithRedirect: true
+  shouldLoginWithRedirect: false
 };
 
 class App extends Component {
   
-  
-
   async componentWillMount() {
  
      await this.loadWeb3()
@@ -42,17 +40,7 @@ class App extends Component {
 
   async loadWeb3() {
 
-    
-
-    /*const uauth = new UAuth({
-      clientID: "LVSrxQ8RYl9sKf//nXs3AiT5/jIZuF9kf4aoN0PHc1k=",
-      clientSecret: "Jnja2HUSIvnH2va87FbAvhYBvr0RSGLtqSxFPPdpVOE=",
-      redirectUri: "https://swap.sonikchain.com",
-      scope: 'openid email wallet client_id',
-      fallbackIssuer: 'https://auth.unstoppabledomains.com',
-      shouldLoginWithRedirect: true
-    })*/
-
+  
     const onClose = () => {
       console.log('provider.close')
   
@@ -89,17 +77,7 @@ class App extends Component {
       }
     };
 
-    /*
-    uauth.loginCallback()
-    .then(() => {
-      console.log("OK");
-      // Redirect to success page
-    })
-    .catch(error => {
-      // Redirect to failure page
-      console.log("NO");
-    });  */
-    
+      
     const web3Modal = new Web3Modal({
       network: "mainnet", // optional
       cacheProvider: false, // optional
@@ -116,14 +94,26 @@ class App extends Component {
     });
     
     installMetamask();
+    
     UAuthWeb3Modal.registerWeb3Modal(web3Modal)
     
-    
+   
+
     //await window.web3.currentProvider.enable();
     //window.web3 = new Web3(window.web3.currentProvider);
     const provider =  await web3Modal.connect();
     //const provider = await web3Modal.connectTo('custom-uauth')
-
+    //this.loadBlockchainData()
+    /*web3Modal.getUAuth(UAuthSPA, uauth)
+    .loginCallback()
+    .then(async () => {
+       const provider = await web3Modal.connectTo('custom-uauth')
+        console.log("ENTRATO")
+       // Save provider in state and redirect to success page
+   })
+   .catch(error => {
+     // Redirect to failure page
+   })*/
     /*UAuthWeb3Modal.getUAuth(UAuthSPA, uauth)
     .loginCallback()
     .then(async () => {
@@ -169,10 +159,10 @@ class App extends Component {
     });  */ 
 
     //provider.on('close', onClose)
-    /*provider.on('connect', (accounts) => {
+    provider.on('connect', (accounts) => {
       this.loadBlockchainData()
       console.log(accounts);
-    });*/
+    });
     provider.on("accountsChanged", (accounts) => {
       this.loadBlockchainData()
       console.log(accounts);
