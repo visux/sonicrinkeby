@@ -17,11 +17,17 @@ import Web3Modal, {
   ERROR_EVENT,
   ICoreOptions,
 } from 'web3modal'
-
+import {IUAuthOptions} from '@uauth/web3modal'
 import $ from "jquery";
 
 
-
+export const uauth = {
+  clientID: 'LVSrxQ8RYl9sKf//nXs3AiT5/jIZuF9kf4aoN0PHc1k=',
+  clientSecret: 'Jnja2HUSIvnH2va87FbAvhYBvr0RSGLtqSxFPPdpVOE=',
+  redirectUri: 'https://swap.sonikchain.com',
+  fallbackIssuer: 'https://auth.unstoppabledomains.com',
+        scope: 'openid wallet',
+};
 
 class App extends Component {
   
@@ -35,14 +41,16 @@ class App extends Component {
 
   async loadWeb3() {
 
-    const uauth = new UAuth({
+    
+
+    /*const uauth = new UAuth({
       clientID: "LVSrxQ8RYl9sKf//nXs3AiT5/jIZuF9kf4aoN0PHc1k=",
       clientSecret: "Jnja2HUSIvnH2va87FbAvhYBvr0RSGLtqSxFPPdpVOE=",
       redirectUri: "https://swap.sonikchain.com",
-      scope: 'openid email wallet',
+      scope: 'openid email wallet client_id',
       fallbackIssuer: 'https://auth.unstoppabledomains.com',
       shouldLoginWithRedirect: true
-    })
+    })*/
 
     const onClose = () => {
       console.log('provider.close')
