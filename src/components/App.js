@@ -24,9 +24,10 @@ import $ from "jquery";
 export const uauth = {
   clientID: 'LVSrxQ8RYl9sKf//nXs3AiT5/jIZuF9kf4aoN0PHc1k=',
   clientSecret: 'Jnja2HUSIvnH2va87FbAvhYBvr0RSGLtqSxFPPdpVOE=',
-  redirectUri: 'https://swap.sonikchain.com',
+  redirectUri: 'https://swap.sonikchain.com/callback',
   fallbackIssuer: 'https://auth.unstoppabledomains.com',
-        scope: 'openid wallet',
+  scope: 'openid wallet',
+  shouldLoginWithRedirect: true
 };
 
 class App extends Component {
