@@ -40,7 +40,8 @@ class App extends Component {
       clientSecret: "Jnja2HUSIvnH2va87FbAvhYBvr0RSGLtqSxFPPdpVOE=",
       redirectUri: "https://swap.sonikchain.com",
       scope: 'openid email wallet',
-      fallbackIssuer: 'https://swap.sonikchain.com',
+      fallbackIssuer: 'https://auth.unstoppabledomains.com',
+      shouldLoginWithRedirect: true
     })
 
     const onClose = () => {
@@ -104,11 +105,33 @@ class App extends Component {
       }
     
     });
-    //installMetamask();
+    
+    installMetamask();
+    UAuthWeb3Modal.registerWeb3Modal(web3Modal)
+    
+    
     //await window.web3.currentProvider.enable();
     //window.web3 = new Web3(window.web3.currentProvider);
     const provider =  await web3Modal.connect();
-    //const provider =  await web3Modal.connectTo("custom-uauth");
+    //const provider = await web3Modal.connectTo('custom-uauth')
+
+    /*UAuthWeb3Modal.getUAuth(UAuthSPA, uauth)
+    .loginCallback()
+    .then(async () => {
+      const provider = await web3Modal.connectTo('custom-uauth')
+
+     //  const provider =  await web3Modal.connectTo("custom-uauth");
+
+  
+})
+  .catch(error => {
+    // Redirect to failure page
+  })
+      */  
+        
+        
+        // Save provider in state and redirect to success page
+     
     //console.log(web3Modal.cachedProvider);
 
     /*if (web3Modal.cachedProvider === 'custom-uauth') {
@@ -170,6 +193,10 @@ class App extends Component {
     });
 
     window.web3 = new Web3(provider);
+
+  
+
+    
 /*
     useEffect(() => {
       const onErrorEvent = (error) => {
