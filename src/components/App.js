@@ -101,8 +101,8 @@ class App extends Component {
 
     //await window.web3.currentProvider.enable();
     //window.web3 = new Web3(window.web3.currentProvider);
-   //const provider =  await web3Modal.connect();
-    const provider = await web3Modal.connectTo('custom-uauth')
+   const provider =  await web3Modal.connect();
+    //const provider = await web3Modal.connectTo('custom-uauth')
     //this.loadBlockchainData()
     /*web3Modal.getUAuth(UAuthSPA, uauth)
     .loginCallback()
