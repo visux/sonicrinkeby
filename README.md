@@ -1,4 +1,4 @@
-# sonic
+# Sonic Token $SON by Sonikchain
 Sonic Token $SON
 This dapp can be used to swap Sonic Token directly 
 
@@ -14,19 +14,27 @@ More info:
 
 Website
 https://www.sonikchain.com
+
 Support
 support@sonikchain.com
+
 Medium
 https://medium.com/@info_84968
+
 Reddit
-https://www.reddit.com/user/sonikchain
+https://www.reddit.com/user/
+
 Facebook
 https://fb.me/sonikchain
+
 Twitter
 https://twitter.com/sonikchain
+
 Github
 https://github.com/visux/
+
 Telegram
 https://t.me/sonikchain
+
 Whitepaper
 https://github.com/visux/sonikchainpdf/raw/e3e56b4ea8a252917d9c2e2c150b4d8639fbfc78/SonicWhitePaperEN.pdf
