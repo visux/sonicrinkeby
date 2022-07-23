@@ -12,6 +12,11 @@ Many young people are happy when they interact with their friends and especially
 
 More info:
 
+You can buy our tokens on https://swap.sonikchain.com
+
+Or Download Wally wallet https://play.google.com/store/apps/details?id=com.wally.app&gl=IT
+Buy tokens directly by Wally app into the discover section.
+
 Website
 https://www.sonikchain.com
 
