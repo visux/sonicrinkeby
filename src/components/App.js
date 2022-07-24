@@ -174,7 +174,7 @@ class App extends Component {
     
     provider.on("networkChanged", (networkId) => {
       
-      if (networkId != 137){
+      if (networkId != 137 && networkId != 565){
         networkId = 5777
       } 
       this.setState({ networkID: networkId })	;
@@ -293,6 +293,8 @@ class App extends Component {
 	
     if (networkId === 137){
       this.setState({ networkString: 'POLYGON' })
+    }else if (networkId === 56){
+      this.setState({ networkString: 'BINANCE SMART CHAIN' })
     }else{
       this.setState({ networkString: 'ETHEREUM' })
     }

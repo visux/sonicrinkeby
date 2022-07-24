@@ -7136,8 +7136,16 @@
       "links": {},
       "address": "0x17487530fe68c14832454f54f5a1a52c62d4a9d4",
       "transactionHash": "0x1b74c205168f9fdc06952a86a6609b0e1315a59f9d4a7fca3fe407cc42a0fdf4"
+    },
+  "56": {
+      "events": {},
+      "links": {},
+      "address": "0x9422FE169133602e18182D3a83E179724B741fF9",
+      "transactionHash": "0xc8275d2484312801411219baa35fca5836e40c4e17d4d6f5cf0ff064cd99b0da"
     }
+  
   },
+  
   "schemaVersion": "3.4.3",
   "updatedAt": "2021-08-18T17:27:00.637Z",
   "devdoc": {

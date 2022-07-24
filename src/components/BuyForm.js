@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import tokenLogo from '../token-logo.png'
 import ethLogo from '../eth-logo.png'
 import maticLogo from '../matic-logo.png'
+import bnbLogo from '../bnb-logo.png'
 
 class BuyForm extends Component {
 
@@ -24,11 +25,15 @@ class BuyForm extends Component {
 	 // const addr = "0x8A753747A1Fa494EC906cE90E9f37563A8AF630e"; // RINKEBY
 	 let addr = "0xAB594600376Ec9fD91F8e885dADF0CE036862dE0";  // MAINNET POLYGON MATIC
  
-     if (this.props.networkID===5777){
+   if (this.props.networkID===5777){
 	    this.state.logogen	 = ethLogo;
 		this.state.namegen ='ETH';
 		addr = "0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419";  // MAINNET
-	 }else{
+	 }else if (this.props.networkID===56){
+    this.state.logogen	 = bnbLogo; 
+		this.state.namegen ='BNB';
+		addr = "0x0567F2323251f0Aab15c8dFb1967E4e8A7D42aeE";  // MAINNET BINANCE BNB SMART CHAIN    
+   }else{ 
 		this.state.logogen	 = maticLogo; 
 		this.state.namegen ='MATIC';
 		addr = "0xAB594600376Ec9fD91F8e885dADF0CE036862dE0";  // MAINNET POLYGON MATIC
@@ -43,14 +48,15 @@ class BuyForm extends Component {
     .then((roundData) => {
         
         console.log("Latest Round Data", roundData)
-        
-        priceSON = 0.01 * 10**8;
-        priceETHUSD = (roundData.answer/10**8)
+        let exp=8;
+       // if (this.props.networkID===56) exp=5;   
+        priceSON = 0.01 * 10**exp;
+        priceETHUSD = (roundData.answer/10**exp)
         console.log(priceETHUSD);
 
         console.log(priceSON);
 
-        rate = ( priceETHUSD / priceSON ) * 10 ** 8;
+        rate = ( priceETHUSD / priceSON ) * 10 ** exp;
         console.log(rate);
          
     });
