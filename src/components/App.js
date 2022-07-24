@@ -4,6 +4,7 @@ import UAuthSPA  from '@uauth/js'
 import * as UAuthWeb3Modal from '@uauth/web3modal'
 import Web3 from "web3";
 import Token from '../abis/Token.json'
+import TokenBSC from '../abis/TokenBSC.json'
 import EthSwap from '../abis/EthSwap.json'
 import Main from './Main.js'
 import Navbar from './Navbar.js'
@@ -324,10 +325,13 @@ class App extends Component {
     const chainId = await web3.eth.getChainId();
     console.log(networkId);
     console.log(chainId);
-    const tokenData = Token.networks[networkId]
 
+    const tokenData  = networkId===56 ? TokenBSC.networks[networkId]: Token.networks[networkId];
+    
     if(tokenData) {
-      const token = new web3.eth.Contract(Token.abi, tokenData.address)
+      
+      const token  = networkId===56 ? new web3.eth.Contract(TokenBSC.abi, tokenData.address): new web3.eth.Contract(Token.abi, tokenData.address);
+    
       this.setState({ token })
       const tokenBalance = await token.methods.balanceOf(this.state.account).call()
       if(tokenBalance != null){
@@ -367,6 +371,8 @@ class App extends Component {
 	  
     }
   }
+
+  
 
   buyTokens = (ethAmount) => {
     this.setState({ loading: true })
