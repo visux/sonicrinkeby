@@ -22,7 +22,10 @@ constructor(props) {
     const tokenImage = 'https://swap.sonikchain.com/sonictok.png';
     if(this.props.networkID === 137) {
 	    tokenAddress = '0x7f8813a8e203ee026c9c6a1ca380e0237488ceb8';
+    }else if (this.props.networkID ===56 ) {
+      tokenAddress = '0x0d51e158abe34321526305ea47d1ebaca16fd142';
     }
+
     try {
       
       const wasAdded =   window.ethereum.request({
@@ -54,7 +57,8 @@ constructor(props) {
     const tokenDecimals = 9;
     const tokenImage = 'https://swap.sonikchain.com/sonictok.png';
     let tokenAddress = '0xA3d64A57eBf6529586C56a2d44979Aaf061e8b58';
-    
+    //if (this.props.networkID ===97 ) tokenAddress = '0x922e07d6958a7046a7a5e6378bfe64e2de6f6542';
+
     try {
       
       const wasAdded =   window.ethereum.request({
@@ -116,7 +120,7 @@ constructor(props) {
       <div id="content" className="mt-3">
         <div className="d-flex justify-content-between mb-3">
         <button id="addmeta" onClick={(event) => {
-             if(this.props.networkID === 56){
+             if(this.props.networkID === 97){
                this.addMetamaskBSC();
              }else {
               this.addMetamask();

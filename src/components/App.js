@@ -175,7 +175,7 @@ class App extends Component {
     
     provider.on("networkChanged", (networkId) => {
       
-      if (networkId != 137 && networkId != 565){
+      if (networkId != 137 && networkId != 56 && networkId != 97){
         networkId = 5777
       } 
       this.setState({ networkID: networkId })	;
@@ -296,41 +296,23 @@ class App extends Component {
       this.setState({ networkString: 'POLYGON' })
     }else if (networkId === 56){
       this.setState({ networkString: 'BINANCE SMART CHAIN' })
+    }else if (networkId === 97){
+      this.setState({ networkString: 'TESTNET BSC' })  
     }else{
       this.setState({ networkString: 'ETHEREUM' })
     }
   
 
-/*
-    const chainId = await ethereum.request({ method: 'eth_chainId' });
-    handleChainChanged(chainId);
-
-    ethereum.on('chainChanged', handleChainChanged);
-
-    function handleChainChanged(_chainId) {
-      // We recommend reloading the page, unless you must do otherwise
-      window.location.reload();
-    }*/
-    //Load Token
-    //const networkId = 'rinkeby'
-   // const networkId = await web3.eth.net.getId()
-	  //await  web3.eth.net.getId()
-	//await  web3.eth.net.getId() 5777
-    
-	 //const networkId = 5777;
-    //const networkId = window.ethereum.request({ method: 'net_version' })
-    //const networkId = await web3.eth.net.getId();
-    //if (networkId === 1)  networkId =5777;
-    
+ 
     const chainId = await web3.eth.getChainId();
     console.log(networkId);
     console.log(chainId);
 
-    const tokenData  = networkId===56 ? TokenBSC.networks[networkId]: Token.networks[networkId];
+    const tokenData  = networkId===97  ? TokenBSC.networks[networkId]: Token.networks[networkId];
     
     if(tokenData) {
       
-      const token  = networkId===56 ? new web3.eth.Contract(TokenBSC.abi, tokenData.address): new web3.eth.Contract(Token.abi, tokenData.address);
+      const token  = networkId===97  ? new web3.eth.Contract(TokenBSC.abi, tokenData.address): new web3.eth.Contract(Token.abi, tokenData.address);
     
       this.setState({ token })
       const tokenBalance = await token.methods.balanceOf(this.state.account).call()
