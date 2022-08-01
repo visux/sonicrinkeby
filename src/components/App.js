@@ -397,7 +397,7 @@ class App extends Component {
         <Navbar account={this.state.account}/>
           <div className="container-fluid mt-5">
         
-          <h1 className="mainWordmark">Smart DEX Swap</h1>
+          <h1 className="mainWordmark">Sonic Token - Smart DEX Swap</h1>
           <h4 className="mainHeader">Next generation PROTOCOL ERC777 by {' '}
            <a href="https://www.sonikchain.com" target="_blank" rel="noopener noreferrer">Sonikchain</a></h4>
          

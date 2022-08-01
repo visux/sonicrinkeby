@@ -1,7 +1,7 @@
 {
   "name": "sonicdexswap",
   "version": "1.0.0",
-  "description": "Sonikchain DEX Cryptocurrency Exchange",
+  "description": "Sonikchain DEX Cryptocurrency Exchange for Sonic Token",
   "author": "support@sonikchain.com",
   "dependencies": {
     "@chainlink/contracts": "^0.2.1",
